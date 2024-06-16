@@ -1,8 +1,8 @@
 package com.example.tobyspring;
 
 import com.example.tobyspring.user.User;
-import com.example.tobyspring.user.dao.ConnectionMaker;
-import com.example.tobyspring.user.dao.CConenctionMaker;
+import com.example.tobyspring.user.dao.AccountDao;
+import com.example.tobyspring.user.dao.DaoFactory;
 import com.example.tobyspring.user.dao.UserDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,8 +14,7 @@ public class UserDaoTest {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         SpringApplication.run(UserDaoTest.class, args);
 
-        ConnectionMaker connectionMaker = new CConenctionMaker();
-        UserDao dao = new UserDao(connectionMaker);
+        UserDao dao = new DaoFactory().userDao();
 
         User user = new User();
         user.setId("minbo");

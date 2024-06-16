@@ -1,8 +1,8 @@
 package com.example.tobyspring;
 
 import com.example.tobyspring.user.User;
-import com.example.tobyspring.user.dao.ConnectionMaker;
-import com.example.tobyspring.user.dao.DConnectionMaker;
+import com.example.tobyspring.user.connection.ConnectionMaker;
+import com.example.tobyspring.user.connection.DConnectionMaker;
 import com.example.tobyspring.user.dao.UserDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

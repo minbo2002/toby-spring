@@ -1,10 +1,10 @@
-package com.example.tobyspring.user.dao;
+package com.example.tobyspring.user.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class CConenctionMaker implements ConnectionMaker {
+public class DConnectionMaker implements ConnectionMaker {
 
     @Override
     public Connection makeConnection() throws ClassNotFoundException, SQLException {
