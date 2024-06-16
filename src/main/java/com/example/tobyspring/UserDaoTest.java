@@ -2,7 +2,7 @@ package com.example.tobyspring;
 
 import com.example.tobyspring.user.User;
 import com.example.tobyspring.user.dao.ConnectionMaker;
-import com.example.tobyspring.user.dao.DConnectionMaker;
+import com.example.tobyspring.user.dao.CConenctionMaker;
 import com.example.tobyspring.user.dao.UserDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,12 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.sql.SQLException;
 
 @SpringBootApplication
-public class TobySpringApplication {
-
+public class UserDaoTest {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        SpringApplication.run(TobySpringApplication.class, args);
+        SpringApplication.run(UserDaoTest.class, args);
 
-        ConnectionMaker connectionMaker = new DConnectionMaker();
+        ConnectionMaker connectionMaker = new CConenctionMaker();
         UserDao dao = new UserDao(connectionMaker);
 
         User user = new User();
@@ -32,5 +31,4 @@ public class TobySpringApplication {
         System.out.println(user2.getPassword());
         System.out.println(user2.getId() + " 조회 성공");
     }
-
 }
