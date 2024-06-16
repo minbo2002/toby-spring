@@ -1,7 +1,6 @@
 package com.example.tobyspring;
 
 import com.example.tobyspring.user.User;
-import com.example.tobyspring.user.dao.NUserDao;
 import com.example.tobyspring.user.dao.UserDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +13,7 @@ public class TobySpringApplication {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         SpringApplication.run(TobySpringApplication.class, args);
 
-        NUserDao dao = new NUserDao();
+        UserDao dao = new UserDao();
 
         User user = new User();
         user.setId("minbo");
