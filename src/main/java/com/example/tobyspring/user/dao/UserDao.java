@@ -49,28 +49,8 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException, ClassNotFoundException {
-        Connection c= null;
-        PreparedStatement ps = null;
-        try {
-            c = connectionMaker.makeConnection();
-            ps = c.prepareStatement("delete from users");
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw e;
-        } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (c != null) {
-                try {
-                    c.close();
-                } catch (SQLException e) {
-                }
-            }
-        }
+        StatementStrategy st = new DeleteAllStatement();
+        jdbcContextWithStatementStrategy(st);
     }
 
     public int getCount() throws ClassNotFoundException, SQLException {
@@ -93,6 +73,32 @@ public class UserDao {
                 } catch (SQLException e) {
                 }
             }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (c != null) {
+                try {
+                    c.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
+
+    public void jdbcContextWithStatementStrategy(StatementStrategy st) throws ClassNotFoundException, SQLException {
+        Connection c = null;
+        PreparedStatement ps = null;
+
+        try {
+            c = connectionMaker.makeConnection();
+            ps = st.makePreparedStatement(c);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
             if (ps != null) {
                 try {
                     ps.close();
